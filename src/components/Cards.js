@@ -24,12 +24,15 @@ const Cards = (props)=>{
          {/* agar hmare pass bhot sara data hai aur hume data ko elements m dalna hai toh sbse short tarika hai map ko use krna */}
         {/* getcourses sare courses ko ek array m return kr raha hai aur us se hum ek ek course ko card m bhej rhe hai */}
         {
-        getCourses().map( (course) => {
-          return  <Card key={course.id} 
-          course={course} 
-           noOfLikedcourses={likedCourses}
+        getCourses().map(
+            //declared call back function using arrow method 
+            (course) =>
+            <Card 
+            key={course.id} 
+            course={course} 
+            noOfLikedcourses={likedCourses}
             setLikedCourses={setLikedCourses}>
-            </Card> }
+            </Card> 
         ) } 
        
         </div>

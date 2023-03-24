@@ -17,7 +17,10 @@ function Card ( props){
            //ya fir , jo equal nahi hai sirf unko hi filter krke rkhlo
            //humne ek filter lgaya , vo course hi uss filter k agy jaega jiski id not equal hogi  current course ki id k
            //y filter previous state courses k harr ek element par check function chlaega, function k parameter m single previous state di hai
-           setLikedCourses( (previousStateCOURSES)=>previousStateCOURSES.filter( (previousStateCOURSE) => previousStateCOURSE!==course.id  ));
+           setLikedCourses( (previousStateCOURSES)=>{
+                 previousStateCOURSES.filter( function check (previousStateCOURSE) {
+                     return previousStateCOURSE!==course.id  }   )
+            });
            toast.warning("Like Removed");
           }
           else{
@@ -31,7 +34,7 @@ function Card ( props){
                 setLikedCourses( (previousStateCOURSES)=> [...previousStateCOURSES , course.id])
             }
             
-            toast.success("Like Succesfully")
+            toast.success("Liked Succesfully")
           }
     }
     return(
