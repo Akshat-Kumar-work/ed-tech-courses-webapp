@@ -9,7 +9,8 @@ import Spinner from "./components/Spinner";
 function App() {
   const [courses, setCourses] = useState([])
   const [loading , setLoading] = useState(true)
-
+  //filter data array ka zero index par jo object hai uskaa title
+  const [category, setCategory] = useState(filterData[0].title);
 
   async function fetchdata (){
     //jab tk data nahi load hua setloading ko true krdo
@@ -41,12 +42,14 @@ function App() {
     <div> <NavBar></NavBar></div>
      
       {/* passing data using props from filterData component */}
-      <div> <Filter filterData={filterData}></Filter> </div>
+      <div> <Filter filterData={filterData} category={category} setCategory={setCategory} ></Filter> </div>
      
       <div className="w-11/12 max-w-[1200px] 
         mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
         
-      {loading? (<Spinner/>):( <Cards courses={courses}/>)}
+      {
+      loading ? (<Spinner/>):( <Cards courses={courses} category={category}/>)
+      }
      
       </div>
       
