@@ -1,10 +1,14 @@
 import Card from "./Card";
+import { useState } from "react";
+
 const Cards = (props)=>{
-    const courses = props.courses;
-    let allCourses = [];
+    let courses = props.courses;
+    //likedcourses naam ka variable bnaya likedcourses ko store krwane k lie , aur starting m koi bhi course like nahi hai
+    const [likedCourses, setLikedCourses] = useState([]);
     
     //getCouses vala function sare courses ka data single array m dal kar return krdega
     const getCourses = ()=>{
+        let allCourses = [];
         //yaha p courses ka mtlb hai jitne bhi courses hai unke objects, aur coursecategory har ek single course
         Object.values(courses).forEach ( (courseCategory)=>{
             //aur course har ek single course category m jo har ek course available hai 
@@ -17,11 +21,16 @@ const Cards = (props)=>{
 
     return (
         <div className="flex flex-wrap justify-center gap-4 mb-4">
-        {/* agar courses khali hai toh no data found return krdo aur agar bhare hai toh info return krdo */}
-        {!courses ? (<div><p>no data found</p></div>) : (getCourses().map( (course) => {
-           return <Card key={course.id} course={course}></Card>
-        }) )}
- {/* agar hmare pass bhot sara data hai aur hume data ko elements m dalna hai toh sbse short tarika hai map ko use krna */}
+         {/* agar hmare pass bhot sara data hai aur hume data ko elements m dalna hai toh sbse short tarika hai map ko use krna */}
+        {/* getcourses sare courses ko ek array m return kr raha hai aur us se hum ek ek course ko card m bhej rhe hai */}
+        {
+        getCourses().map( (course) => {
+          return  <Card key={course.id} 
+          course={course} 
+           noOfLikedcourses={likedCourses}
+            setLikedCourses={setLikedCourses}>
+            </Card> }
+        ) } 
        
         </div>
     )
