@@ -42,7 +42,7 @@ function Card ( props){
         <div className=" w-[300px] bg-slate-900 rounded-lg overflow-hidden bg-opacity-80">
             <div className=" relative">
                 <img src={course.image.url}></img>
-                <div className=" absolute w-[40px] h-[40px] bg-white right-2 bottom-3 rounded-full grid place-items-center opacity-80">
+                <div className=" absolute w-[40px] h-[40px] bg-white right-2 bottom-[0] rounded-full grid place-items-center opacity-80">
                     <button onClick={clickHandler}>
                      {
                         //agar likedcourses m current course ki id hai toh unlike vala icon show kro aur  agar nahi toh like vala icon show kro

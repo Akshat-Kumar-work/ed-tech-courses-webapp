@@ -30,8 +30,6 @@ const Cards = (props)=>{
             return courses[category]
         }
 
-     
-
        
     }
 
